@@ -1,0 +1,22 @@
+{
+  "name": "karaoke_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Brandon Williams",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.0.1",
+    "discord.js": "^11.1.0",
+    "fs": "0.0.1-security",
+    "moment": "^2.18.1",
+    "opusscript": "0.0.3",
+    "ytdl-core": "^0.15.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
