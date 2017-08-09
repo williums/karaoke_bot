@@ -5,7 +5,6 @@ const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');
 const ytdl = require('ytdl-core');
-
 require('./utils/eventLoader')(client);
 
 function log(message) {
@@ -24,10 +23,10 @@ fs.readdir('./commands/', (err, files) => {
   });
 });
 
-// Initialize object that contains the song queue, np_flag and dispatcher
+client.voiceConnection = null;
 client.playlist = {
   queue: [],
-  is_playing: false,
+  stopped: false,
 };
 
 // Debug Events
