@@ -4,6 +4,7 @@ const settings = require('./settings.json');
 const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');
+const ytdl = require('ytdl-core');
 
 require('./utils/eventLoader')(client);
 
@@ -26,7 +27,7 @@ fs.readdir('./commands/', (err, files) => {
 // Initialize object that contains the song queue, np_flag and dispatcher
 client.playlist = {
   queue: [],
-  playing: false,
+  is_playing: false,
 };
 
 // Debug Events

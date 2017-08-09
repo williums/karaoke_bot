@@ -1,19 +1,4 @@
-const YTDL = require('ytdl-core');
-
-function play(connection, message) {
-  const playlist = message.client.playlist;
-
-  playlist.dispatcher = connection.playStream(YTDL(playlist.queue[0], {filter: 'audioonly'}));
-  playlist.queue.shift();
-
-  playlist.dispatcher.on('end', () => {
-    if (playlist.queue[0]) {
-      play(connection, message);
-    } else {
-      connection.disconnect();
-    }
-  });
-}
+const play = require('../utils/play');
 
 exports.run = function(client, message, args) {
   const playlist = client.playlist;
