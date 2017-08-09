@@ -15,12 +15,8 @@ exports.run = function(client, message, args) {
       playlist.queue.push(args[0]);
       message.channel.send(`${info["title"]} has been added to the queue.`, {code:'asciidoc'});
     }
-    if(!playlist.is_playing && playlist.queue.length) {
-      if (!message.guild.voiceConnection) {
-        message.member.voiceChannel.join().then(connection => {
-          play(connection, message);
-        });
-      }
+    if(!playlist.stopped && playlist.queue.length) {
+      play(connection, message);
     }
   });
 }

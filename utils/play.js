@@ -13,11 +13,12 @@ function play(connection, message) {
     if (playlist.queue.length) {
       // wait half a second to prevent dispatcher race condition
       setTimeout( () => { play(connection, message) }, 500);
-    } else {
-      message.channel.send('No songs in queue, disconnecting.', {code:'asciidoc'});
-      playlist.is_playing = false;  
-      connection.disconnect();
     }
+    // } else {
+    //   message.channel.send('No songs in queue, disconnecting.', {code:'asciidoc'});
+    //   playlist.stopped = true;  
+    //   connection.disconnect();
+    // }
   });
 }
 

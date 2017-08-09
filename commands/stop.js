@@ -13,3 +13,7 @@ exports.help = {
   description: 'Disconnects the bot from the voice channel and clears the queue.',
   usage: 'stop'
 };
+
+    // playlist.queue.forEach(song => {
+    //   playlist.queue.splice(i, 1);
+    // });
