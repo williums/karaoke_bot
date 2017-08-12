@@ -12,8 +12,7 @@ exports.run = function(client, message, args) {
       message.channel.send('The requested video does not exist or cannot be played.', {code:'asciidoc'});
       console.log(`Error: ${error}`);
     } else {
-      playlist.queue.push(args[0]);
-      playlist.nowPlaying = info['title'];
+      playlist.queue.push({link: args[0], title: info['title']});
       message.channel.send(`${info['title']} has been added to the queue.`, {code:'asciidoc'});
     }
     if(!playlist.stopped && playlist.queue.length) {
