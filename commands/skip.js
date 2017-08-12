@@ -1,10 +1,10 @@
-exports.run = function(client, message, args) {
+exports.run = function(client, message) {
   const playlist = client.playlist;
   if (playlist.dispatcher) {
     playlist.dispatcher.end();
     message.reply('Skipping to next song in queue.', {code:'asciidoc'});    
   }
-}
+};
 
 exports.help = {
   name: 'skip',

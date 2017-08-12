@@ -1,19 +1,31 @@
 const chalk = require('chalk');
-const settings = require('../settings.json')
+const settings = require('../settings.json');
+
+let server, textChannel, voiceChannel;
+
+const findTextChannel = chn => {
+  return chn.name === settings.TEXTCHANNEL && chn.type === 'text';
+};
+
+const findVoiceChannel = chn => {
+  return chn.name === settings.VOICECHANNEL && chn.type === 'voice';
+};
 
 module.exports = client => {
-  const server = client.guilds.find("name", settings.server);
-  if(server === null) throw "Couldn't find server '" + settings.server + "'";
-  console.log(chalk.bgGreen(`Connected to server '${settings.server}'`));
+  server = client.guilds.find('name', settings.SERVER);
+  if(server === null) throw `Couldn't find server '${settings.SERVER}'`;
+  console.log(chalk.bgGreen(`Connected to server '${settings.SERVER}'`));
 
-  const textChannel = server.channels.find(chn => chn.name === settings.textChannel && chn.type === "text"); //The text channel the bot will use to announce stuff
-  if(textChannel === null) throw `Couldn't find text channel ${settings.textChannel} in server ${settings.server}`;
-  console.log(chalk.bgGreen(`Found text channel '${settings.textChannel}'`));
+  textChannel = server.channels.find(findTextChannel); 
+  if(textChannel === null) throw `Couldn't find text channel ${settings.TEXTCHANNEL} in server ${settings.SERVER}`;
+  console.log(chalk.bgGreen(`Found text channel '${settings.TEXTCHANNEL}'`));
 
-  const voiceChannel = server.channels.find(chn => chn.name === settings.voiceChannel && chn.type === "voice"); //The voice channel the bot will connect to
-  if(voiceChannel === null) throw `Couldn't find voice channel ${settings.voiceChannel} in server ${settings.server}`;
-  voiceChannel.join().then(connection => {
-    client.voiceConnection = connection;
-    console.log(chalk.bgGreen(`Joined voice channel '${settings.voiceChannel}'`));
-  }).catch(console.error);
-}
+  voiceChannel = server.channels.find(findVoiceChannel); 
+  if(voiceChannel === null) throw `Couldn't find voice channel ${settings.VOICECHANNEL} in server ${settings.SERVER}`;
+  voiceChannel.join()
+    .then(connection => {
+      client.voiceConnection = connection;
+      console.log(chalk.bgGreen(`Joined voice channel '${settings.VOICECHANNEL}'`));
+    })
+    .catch(console.error);
+};

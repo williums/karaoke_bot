@@ -4,12 +4,11 @@ const settings = require('./settings.json');
 const chalk = require('chalk');
 const fs = require('fs');
 const moment = require('moment');
-const ytdl = require('ytdl-core');
 require('./utils/eventLoader')(client);
 
 function log(message) {
   console.log(`[${moment().format('YYYY-MM-DD HH:mm:ss')}] ${message}`);
-};
+}
 
 // Load commands 
 client.commands = new Discord.Collection();
@@ -44,4 +43,4 @@ client.on('warn', e => {
 //   console.log(chalk.bgBlue(e.replace(regToken, '[redacted]')));
 // });
 
-client.login(settings.token);
+client.login(settings.DISCORD);

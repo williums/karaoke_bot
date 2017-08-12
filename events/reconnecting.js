@@ -1,5 +1,5 @@
 const chalk = require('chalk');
 
-module.exports = client => {
-  console.log(`Reconnecting at ${new Date()}`)
-}
+module.exports = () => {
+  console.log(chalk.bgGreen(`Reconnecting at ${new Date()}`));
+};

@@ -1,20 +1,21 @@
-const Discord = require('discord.js')
+const Discord = require('discord.js');
 
-exports.run = function(client, message, args) {
+const concatQueueTitles = queue => {
+  return queue.map(elem => `${elem.title}\n`).join('');
+};
+
+exports.run = function(client, message) {
   const playlist = client.playlist;
   if (!playlist.queue.length) {
     return message.reply('No songs in queue', {code:'asciidoc'});
   }
-  let description = '';
-  playlist.queue.forEach(song => {
-    description += song.title + '\n'
-  });
+  let description = concatQueueTitles(playlist.queue);
   const embed = new Discord.RichEmbed()
     .setColor(0x588F27)
     .setDescription(description)
-    .setTitle('Queue')
+    .setTitle('Next Up');
   return message.channel.send({embed});
-}
+};
 
 exports.help = {
   name: 'queue',
