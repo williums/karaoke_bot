@@ -1,5 +1,3 @@
-const chalk = require('chalk');
-
-module.exports = client => {
+module.exports = () => {
   console.log(`You have been disconnected at ${new Date()}`);
-}
+};

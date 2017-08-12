@@ -1,4 +1,4 @@
-const play = require('../utils/play');
+const player = require('../utils/player');
 const ytdl = require('ytdl-core');
 
 exports.run = function(client, message, args) {
@@ -8,18 +8,18 @@ exports.run = function(client, message, args) {
 
   ytdl.getInfo(args[0], (error, info) => {
     if(error) {
-      console.log(`Error: ${error}`);
+      console.warn(`Error: ${error}`);
       return message.reply('The requested video does not exist or cannot be played.', {code:'asciidoc'});
     } 
     playlist.queue.push({link: args[0], title: info['title']});
     message.reply(`"${info['title']}" has been added to the queue.`, {code:'asciidoc'});
 
-    if(!playlist.stopped && playlist.queue.length && !playlist.playing) {
-      play(client, message);
+    let playable = !playlist.stopped && playlist.queue.length && !playlist.playing;
+    if (playable) {
+      player(client, message);
     }
   });
-}
-
+};
 
 exports.help = {
   name: 'request',

@@ -1,9 +1,9 @@
 {
-  "token": "MzQyMzc4NjEyNjc2MzYyMjQx.DGOwhA.3ZAtZ4YpJgWKhqCEMzy7Uu6mJng",
-  "prefix": "!",
-  "ytkey": "AIzaSyDdHd0urA8qU2NIT5k1cqJhhw7jy9EKz1c",
-  "server": "dev",
-  "textChannel": "general",
-  "voiceChannel": "General",
-  "genius": "Sz1SatKcTaboWGz8x2r0XUjAew5Vi_JWVLQ1Ff9YUplGLcxd2cvtG3W87uuKUJGG"
+  "DISCORD": "MzQyMzc4NjEyNjc2MzYyMjQx.DGOwhA.3ZAtZ4YpJgWKhqCEMzy7Uu6mJng",
+  "GENIUS": "Sz1SatKcTaboWGz8x2r0XUjAew5Vi_JWVLQ1Ff9YUplGLcxd2cvtG3W87uuKUJGG",
+  "YOUTUBE": "AIzaSyDdHd0urA8qU2NIT5k1cqJhhw7jy9EKz1c",
+  "PREFIX": "!",
+  "SERVER": "dev",
+  "TEXTCHANNEL": "general",
+  "VOICECHANNEL": "General"
 }
