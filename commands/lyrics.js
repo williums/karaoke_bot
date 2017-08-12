@@ -36,11 +36,11 @@ const searchLyrics = url => {
 exports.run = function(client, message, args) {
   playlist = client.playlist;
 
-  if (!args[0]) return message.channel.send('Please supply an option');
+  if (!args[0]) return message.reply('Please supply an option, either [np] or [search query]');
 
   let query, url;
-  args[0] === 'np' ? query = getArtistTitle(playlist.nowPlaying).join(' ') : query = args.slice(1).join(' ');
-  
+  args[0] === 'np' ? query = getArtistTitle(playlist.current).join(' ') : query = args.slice(1).join(' ');
+
   searchLyrics(`${baseURL}&q=${encodeURIComponent(query)}`)
     .then(songData => {
       const embed = new Discord.RichEmbed()
@@ -53,6 +53,6 @@ exports.run = function(client, message, args) {
 
 exports.help = {
   name: 'lyrics',
-  description: 'Fetches lyrics for the song according to the option supplied as argument.',
-  usage: 'lyrics [np | search_query]'
+  description: 'Fetches lyrics for a song.',
+  usage: 'lyrics [np | search query]'
 };
