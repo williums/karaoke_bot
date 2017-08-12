@@ -13,10 +13,11 @@ exports.run = function(client, message, args) {
       console.log(`Error: ${error}`);
     } else {
       playlist.queue.push(args[0]);
-      message.channel.send(`${info["title"]} has been added to the queue.`, {code:'asciidoc'});
+      playlist.nowPlaying = info['title'];
+      message.channel.send(`${info['title']} has been added to the queue.`, {code:'asciidoc'});
     }
     if(!playlist.stopped && playlist.queue.length) {
-      play(connection, message);
+      play(client, message);
     }
   });
 }
