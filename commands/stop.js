@@ -1,7 +1,8 @@
 exports.run = function(client, message, args) {
   const playlist = client.playlist;
-  if (message.guild.voiceConnection) {
+  if (playlist.dispatcher) {
     playlist.stopped = true;
+    playlist.playing = false;
     playlist.dispatcher.end();
     message.reply(`Playlist stopped.`, {code:'asciidoc'});
   }
