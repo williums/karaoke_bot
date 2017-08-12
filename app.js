@@ -26,6 +26,7 @@ fs.readdir('./commands/', (err, files) => {
 client.voiceConnection = null;
 client.playlist = {
   queue: [],
+  nowPlaying: '',
   stopped: false,
 };
 
@@ -39,8 +40,8 @@ client.on('warn', e => {
   console.log(chalk.bgYellow(e.replace(regToken, '[redacted]')));
 });
 
-client.on('debug', e => {
-  console.log(chalk.bgBlue(e.replace(regToken, '[redacted]')));
-});
+// client.on('debug', e => {
+//   console.log(chalk.bgBlue(e.replace(regToken, '[redacted]')));
+// });
 
 client.login(settings.token);

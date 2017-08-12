@@ -9,11 +9,15 @@
   "author": "Brandon Williams",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.16.2",
     "chalk": "^2.0.1",
+    "cheerio": "^1.0.0-rc.2",
     "discord.js": "^11.1.0",
     "fs": "0.0.1-security",
+    "get-artist-title": "^1.0.0",
     "moment": "^2.18.1",
     "opusscript": "0.0.3",
+    "tinyreq": "^3.2.5",
     "ytdl-core": "^0.15.0"
   },
   "devDependencies": {

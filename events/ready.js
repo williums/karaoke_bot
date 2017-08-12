@@ -13,7 +13,7 @@ module.exports = client => {
   const voiceChannel = server.channels.find(chn => chn.name === settings.voiceChannel && chn.type === "voice"); //The voice channel the bot will connect to
   if(voiceChannel === null) throw `Couldn't find voice channel ${settings.voiceChannel} in server ${settings.server}`;
   voiceChannel.join().then(connection => {
-    voiceConnection = connection;
+    client.voiceConnection = connection;
     console.log(chalk.bgGreen(`Joined voice channel '${settings.voiceChannel}'`));
   }).catch(console.error);
 }
