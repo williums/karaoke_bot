@@ -1,17 +1,25 @@
 const YTDL = require('ytdl-core');
+const settings = require('../settings.json')
 
 function play(client, message) {
-  const playlist = message.client.playlist;
+  const playlist = client.playlist;
+
+  if (playlist.stopped) return message.reply(`Playlist is currently stopped. Resume with ${settings.prefix}resume.`, {code:'asciidoc'});
+
   const stream = YTDL(playlist.queue[0].link, {filter: 'audioonly'});
   playlist.dispatcher = client.voiceConnection.playStream(stream);
-  playlist.nowPlaying = playlist.queue[0].title;
+  playlist.current = playlist.queue[0].title;
+  playlist.playing = true;
   // message.channel.send(`Now playing: ${playlist.queue[0]}`, {code:'asciidoc'});
   playlist.queue.shift();
 
   playlist.dispatcher.on('end', () => {
     if (playlist.queue.length) {
       // wait half a second to prevent dispatcher race condition
-      setTimeout( () => { play(client.voiceConnection, message) }, 500);
+      setTimeout( () => { play(client, message) }, 500);
+    } else {
+      playlist.current = '';
+      playlist.playing = false;
     }
   });
 }

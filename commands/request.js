@@ -4,18 +4,17 @@ const ytdl = require('ytdl-core');
 exports.run = function(client, message, args) {
   const playlist = client.playlist;
 
-  if (!args[0]) return message.channel.send('Please supply a song link');
-  if (!message.member.voiceChannel)  return message.channel.send('You must be in a voice channel to use this command');
+  if (!args[0]) return message.reply('Please supply a song link', {code:'asciidoc'});
 
   ytdl.getInfo(args[0], (error, info) => {
     if(error) {
-      message.channel.send('The requested video does not exist or cannot be played.', {code:'asciidoc'});
       console.log(`Error: ${error}`);
-    } else {
-      playlist.queue.push({link: args[0], title: info['title']});
-      message.channel.send(`${info['title']} has been added to the queue.`, {code:'asciidoc'});
-    }
-    if(!playlist.stopped && playlist.queue.length) {
+      return message.reply('The requested video does not exist or cannot be played.', {code:'asciidoc'});
+    } 
+    playlist.queue.push({link: args[0], title: info['title']});
+    message.reply(`"${info['title']}" has been added to the queue.`, {code:'asciidoc'});
+
+    if(!playlist.stopped && playlist.queue.length && !playlist.playing) {
       play(client, message);
     }
   });
