@@ -24,7 +24,7 @@ If you need any help configuring FFMPEG, [This page](https://github.com/adaptlea
 
 Run `npm install` in the bot directory to install the dependencies. This could take a minute, but be patient.
 
-Next, configure settings.json with the correct information for your discord server. 
+Next, rename settings.json.example to settings.json with the correct information for your discord server. 
 
 ```
 "DISCORD":      [Your discord bot token]
