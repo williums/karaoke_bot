@@ -1,0 +1,8 @@
+{
+  "DISCORD":      [Your discord bot token],
+  "GENIUS":       [Your Genius client access token],
+  "PREFIX":       [The prefix you'd like to use for this bot's commands. Default is '!'],
+  "SERVER":       [The name of the server that KaraokeBot is joining],
+  "TEXTCHANNEL":  [The name of the text channel that KaraokeBot listens to for commands],
+  "VOICECHANNEL": [The voice channel that you're singing in]
+}
