@@ -33,7 +33,13 @@ const checkSpotify = hits => {
 };
 
 const createQuery = arg => {
-  return arg === 'np' ? getArtistTitle(playlist.current).join(' ') : arg.slice(1).join(' ');
+  if (arg === 'np') {
+    const query = [ artist, title ] = getArtistTitle(playlist.current, {
+      defaultArtist: ' '
+    });
+    console.log(query)
+    return query.join(' ')
+  } else return arg.slice(1).join(' ');
 };
 
 exports.run = function(client, message, args) {
